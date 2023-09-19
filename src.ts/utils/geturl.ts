@@ -77,7 +77,7 @@ export async function getUrl(req: FetchRequest, signal?: FetchCancelSignal): Pro
 
             resp.on("end", () => {
                 if (headers["content-encoding"] === "gzip" && body) {
-                    body = getBytes(gunzipSync(body));
+                    body = getBytes(gunzipSync(Buffer.from(body)));
                 }
 
                 resolve({ statusCode, statusMessage, headers, body });

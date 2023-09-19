@@ -66,7 +66,7 @@ async function getUrl(req, signal) {
             });
             resp.on("end", () => {
                 if (headers["content-encoding"] === "gzip" && body) {
-                    body = (0, data_js_1.getBytes)((0, zlib_1.gunzipSync)(body));
+                    body = (0, data_js_1.getBytes)((0, zlib_1.gunzipSync)(Buffer.from(body)));
                 }
                 resolve({ statusCode, statusMessage, headers, body });
             });
